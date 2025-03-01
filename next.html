@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Mousse Recipe</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Moon+Dance&family=Poppins&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+    <link rel="stylesheet" href="next1.css"
+</head>
+<body>
+    <div class="container">
+        <div class="card-body">
+            <div class="card" id="firstCard">
+                <h1>Chocolate Mousse</h1>
+                <p>
+                    Chocolate mousse is a staple among chocolate desserts. A soft prepared food that incorporates air bubbles to give it a light and airy texture.
+                </p>
+
+                <div class="list">
+                    <h2>Ingredients:</h2>
+                    <ul>
+                        <li>Chocolate</li>
+                        <li>Heavy cream</li>
+                        <li>Sugar</li>
+                        <li>Eggs</li>
+                        <li>Vanilla extract</li>
+                    </ul>
+                    <a href="index.html">
+                        <button class="back">Back</button>
+                    </a>
+                    <button id="startPreparationButton">Start Preparation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('startPreparationButton').addEventListener('click', function() {
+           
+            const newCard = document.createElement('div');
+            newCard.classList.add('card', 'preparation-card'); // Add the 'preparation-card' class for styling
+            newCard.innerHTML = `
+                <h1>Preparation Steps</h1>
+                <ul>
+                    <li> 1.Melt the chocolate in a heatproof bowl over a pot of simmering water.</li>
+                    <li> 2.Whip the heavy cream until soft peaks form.</li>
+                    <li> 3.Combine melted chocolate and whipped cream, folding them together until smooth.</li>
+                    <li> 4.Whisk the eggs and sugar until fluffy, then fold them into the chocolate mixture.</li>
+                    <li> 5.Add vanilla extract and mix well.</li>
+                    <li> 6.Refrigerate the mousse for at least 2 hours before serving.</li>
+                </ul>
+                <button class="backToIngredientsButton">Back to Ingredients</button>
+            `;
+
+           
+            const cardBody = document.querySelector('.card-body');
+            cardBody.appendChild(newCard);
+
+            
+            document.getElementById('firstCard').classList.add('moveLeft');
+            newCard.classList.add('moveRight');
+
+            
+            newCard.querySelector('.backToIngredientsButton').addEventListener('click', function() {
+                newCard.remove();  
+                document.getElementById('firstCard').classList.remove('moveLeft'); // Reset the ingredient card position
+            });
+        });
+    </script>
